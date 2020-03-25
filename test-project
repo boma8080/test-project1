@@ -1,0 +1,14 @@
+##### ansible-playbook user_group.yml
+---
+- name: Add user to group
+  hosts: "*"
+  become: yes
+  tasks:
+    - name: add generic account users on all the hosts
+      user:
+        name: "{{ item }}"
+        state: present
+        groups: "abd"
+      loop:
+       - webadmin
+       - dbadmin
